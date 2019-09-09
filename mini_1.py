@@ -36,7 +36,7 @@ class MyGrid(ScreenManager):
         self.thread = threading.Thread(target = self.pressed)
 
         self.path = []
-        self.path.append('C:\\Users\CLIVE\Downloads')
+        
         self.path_list = []
         self.input_list = []
 
@@ -62,21 +62,20 @@ class MyGrid(ScreenManager):
                 self.path.append(re.sub('\\n','',i))        
 
 
+        if len(self.path) >=1:
+            for p in self.path:
 
+                self.path_list.append([i for i in os.listdir(p) if i.split('.')[-1].lower() in ['png','jpg','jpeg']])
 
-        for p in self.path:
-
-            self.path_list.append([i for i in os.listdir(p) if i.split('.')[-1].lower() in ['png','jpg','jpeg']])
-
-        # self.path_list = [[i for i in os.listdir('C:\\Users\CLIVE\Downloads') if i.split('.')[-1].lower() in ['png','jpg','jpeg']]]
+                # self.path_list = [[i for i in os.listdir('C:\\Users\CLIVE\Downloads') if i.split('.')[-1].lower() in ['png','jpg','jpeg']]]
         
 
-        for i in self.path:
+            for i in self.path:
     
-            for j in os.listdir(i):
-                if j.split('.')[-1].lower() in ['png','jpg','jpeg']:
+                for j in os.listdir(i):
+                    if j.split('.')[-1].lower() in ['png','jpg','jpeg']:
 
-                    self.input_list.append(os.path.join(i,j))    
+                        self.input_list.append(os.path.join(i,j))    
 
 
 
